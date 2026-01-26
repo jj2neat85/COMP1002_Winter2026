@@ -1,0 +1,200 @@
+<!DOCTYPE html> 
+
+<html>
+
+    <!-- Head -->
+    <head>
+        <!-- Set the title of the webpage -->
+         <title>Basic HTML Form Lab</title>
+    </head>
+
+    <!-- I could technically add css, but I got told *HTML ONLY* (css is technically a part of html via the style tag but we're learning basics in class) -->
+
+    <!-- Body content of the page -->
+    <body>
+
+        <!-- Main heading -->
+        <h1> User Registration </h1>
+        <p> Please complete all required fields marked with * </p>
+
+        <!-- Create a form element -->
+        <form action="/my_api_endpoint_would_go_here" method="POST">
+
+            <!-- Group together a set of fields with a fieldset -->
+
+            <!-- START of fieldset 1 -->
+
+            <fieldset>
+
+                <!-- Title of the fieldset -->
+                <legend> Personal Information </legend>
+
+                <!-- 
+                    I'm going to use some DIV's to seperate certain things onto new lines, 
+                    I could use <br>, but I think divs are neater. 
+                -->
+
+                <div>
+
+                    <!-- First name input and label (required)-->
+                    <label for="firstName">First Name * </label>
+                    <!-- Input with the id firstName, minimum length of 2 characters and it tells you to write your first name -->
+                    <input type="text" id="first-name" name="first-name" minlength="2" placeholder="Enter your first name" required> 
+
+                    <!-- Last name input and label (required) (Duplicate of firstName basically) -->
+                    <label for="lastName">Last Name * </label>
+                    <!-- Input with the id lastName, works the same as the first name -->
+                    <input type="text" id="last-name" name="last-name" minlength="2" placeholder="Enter your last name" required> 
+                
+                </div>
+
+                <div> <!-- I technically don't need this div, but consistiency is nice. -->
+
+                    <!-- Date of birth input (used date as the input type, required)-->
+                    <label for="birth-date">Date of Birth * </label>
+                    <!-- Was flexible on the min and max -->
+                    <input type="date" id="birth-date" name="birth-date" min="1800-01-01" max="2100-12-31" required> 
+                
+                </div>
+
+                <!-- Another div -->
+                <div> 
+
+                    <!-- Inline header for gender -->
+                    <legend> Gender: </legend>
+
+                    <!-- Inputs with the "radio" type, nested in labels. -->
+
+                    <label> <!-- Male -->
+                        <input type="radio" name="gender" value="male" required>
+                        Male
+                    </label>
+
+                    <label> <!-- Female -->
+                        <input type="radio" name="gender" value="female" required>
+                        Female
+                    </label>
+
+                    <label> <!-- Other -->
+                        <input type="radio" name="gender" value="other" required>
+                        Other
+                    </label>
+
+                    <label> <!-- Prefer not to say -->
+                        <input type="radio" name="gender" value="NA" required>
+                        Prefer not to say
+                    </label>
+
+                </div>
+
+                <div> <!-- Another div that technically isn't needed, but it looks consistient to read -->
+                    
+                    <!-- Country dropdown label -->
+                    <label for="country">Country * </label>
+
+                    <!-- Create the dropdown with a select element -->
+                    <select id="country" name="country" required>
+
+                        <!-- I'm going to create a header type thing in the dropdown, I'll make sure its disabled so you can't click on it -->
+                        <option value="" disabled> Select your country </option>
+
+                        <!-- Let me add some examples -->
+                        <option value="canada">Canada</option>
+                        <option value="usa">United States</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="other">Other</option>
+                        
+                    </select>
+
+                </div>
+
+            </fieldset>
+
+            <!-- END of fieldset 1 -->
+            
+            <!-- START of fieldset 2 -->
+            
+            <fieldset>
+
+                <!-- Title of the fieldset -->
+                <legend> Contact Information </legend>
+
+                <!-- Email address input and label (required) -->
+                <label for="email">Email Address * </label>
+                <input type="email" id="email" name="email" placeholder="example@hotmail.com" required>
+
+            </fieldset>
+
+            <!-- END of fieldset 2 -->
+            
+            <!-- START of fieldset 3 -->
+            
+            <fieldset>
+
+                <!-- Title of the fieldset -->
+                <legend> Credentials </legend>
+
+                <!-- Password input and label (required)-->
+                <label for="password">Password * </label>
+                <!-- Add a regex pattern and a message for when its not met, this regex was taken from week_three/02_clientside_validation/index.html -->
+                <input type="password" id="password" name="password" minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Must contain one number, one uppercase character, one lowercase character, a special character and be 8 characters in length" required> 
+
+                <!-- Confirm Password input and label (required)-->
+                <label for="confirm-password">Confirm Password * </label>
+                <input type="password" id="confirm-password" name="confirm-password" minlength="8" required>
+
+            </fieldset>
+
+            <!-- END of fieldset 3 -->
+
+            <!-- START of fieldset 4 -->
+            
+            <fieldset>
+
+                <!-- Title of the fieldset -->
+                <legend> Preferences </legend>
+
+                <!-- Newsletter checkbox -->
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <label for="newsletter">Subscribe to the newsletter</label>
+
+                <!-- Terms and conditions checkbox (required) -->
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the terms and conditions</label>
+
+            </fieldset>
+
+            <!-- END of fieldset 4 -->
+
+            <!-- START of fieldset 5 -->
+            
+            <fieldset>
+
+                <!-- Title of the fieldset -->
+                <legend> Comments </legend>
+
+                <!-- 
+                    Id of comments, name of comments, maximum rows is 5, 
+                    maximum characters is 400, and a placeholder is put there 
+                -->
+                <textarea id="comments" name="comments" rows="3" maxlength="400" placeholder="Leave a comment (optional)"></textarea> 
+                
+                <div> <!-- Make a div to create it on a new line <br> works aswell -->
+                    <small>Maximum 400 characters</small> <!-- Just a little bit of UI to let the user know they have a limited amount of space -->
+                </div>
+
+            </fieldset>
+
+            <!-- END of fieldset 5 -->
+
+            <br> <!-- Just adding some padding -->
+
+            <!-- Submit form button -->
+            <input type="submit" value="Submit">
+
+        <!-- END of the form -->
+        </form>
+
+    </body>
+</html>
+
